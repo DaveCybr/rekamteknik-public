@@ -1,0 +1,1092 @@
+{
+	"info": {
+		"name": "Laravel API Collection",
+		"description": "Collection untuk API Laravel - Service Management System",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8000/api",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "",
+			"type": "string"
+		}
+	],
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"your_username\",\n    \"password\": \"your_password\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/login",
+							"host": ["{{base_url}}"],
+							"path": ["login"]
+						}
+					}
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/logout",
+							"host": ["{{base_url}}"],
+							"path": ["logout"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Dashboard",
+			"item": [
+				{
+					"name": "Get Dashboard",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/dashboard",
+							"host": ["{{base_url}}"],
+							"path": ["dashboard"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Member",
+			"item": [
+				{
+					"name": "Get All Members",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/member?limit=10&search=",
+							"host": ["{{base_url}}"],
+							"path": ["member"],
+							"query": [
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "search",
+									"value": ""
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Member",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/getMember?search=",
+							"host": ["{{base_url}}"],
+							"path": ["getMember"],
+							"query": [
+								{
+									"key": "search",
+									"value": ""
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Create Member",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nama_member\": \"John Doe\",\n    \"alamat\": \"Jl. Example No. 123\",\n    \"nomor_telepon\": \"08123456789\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/member",
+							"host": ["{{base_url}}"],
+							"path": ["member"]
+						}
+					}
+				},
+				{
+					"name": "Update Member",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nama_member\": \"John Doe Updated\",\n    \"alamat\": \"Jl. Example No. 456\",\n    \"nomor_telepon\": \"08987654321\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/member/:id/update",
+							"host": ["{{base_url}}"],
+							"path": ["member", ":id", "update"],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Delete Member",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/member/:id",
+							"host": ["{{base_url}}"],
+							"path": ["member", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Insert Member from Transaksi",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/insertMember",
+							"host": ["{{base_url}}"],
+							"path": ["insertMember"]
+						}
+					}
+				},
+				{
+					"name": "Get Transaksi Member",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/transaksiMember?id_member=",
+							"host": ["{{base_url}}"],
+							"path": ["transaksiMember"],
+							"query": [
+								{
+									"key": "id_member",
+									"value": ""
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "Get All Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/product?limit=10&search=",
+							"host": ["{{base_url}}"],
+							"path": ["product"],
+							"query": [
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "search",
+									"value": ""
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Product by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/product/:id",
+							"host": ["{{base_url}}"],
+							"path": ["product", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Create Product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "nama",
+									"value": "Product Name",
+									"type": "text"
+								},
+								{
+									"key": "harga",
+									"value": "100000",
+									"type": "text"
+								},
+								{
+									"key": "hpp",
+									"value": "80000",
+									"type": "text"
+								},
+								{
+									"key": "stok",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "satuan",
+									"value": "pcs",
+									"type": "text"
+								},
+								{
+									"key": "kategori",
+									"value": "Barang",
+									"type": "text"
+								},
+								{
+									"key": "seri",
+									"value": "ABC123",
+									"type": "text"
+								},
+								{
+									"key": "deskripsi",
+									"value": "Product description",
+									"type": "text"
+								},
+								{
+									"key": "foto",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/product",
+							"host": ["{{base_url}}"],
+							"path": ["product"]
+						}
+					}
+				},
+				{
+					"name": "Update Product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "nama",
+									"value": "Updated Product",
+									"type": "text"
+								},
+								{
+									"key": "harga",
+									"value": "120000",
+									"type": "text"
+								},
+								{
+									"key": "hpp",
+									"value": "90000",
+									"type": "text"
+								},
+								{
+									"key": "stok",
+									"value": "15",
+									"type": "text"
+								},
+								{
+									"key": "satuan",
+									"value": "pcs",
+									"type": "text"
+								},
+								{
+									"key": "kategori",
+									"value": "Barang",
+									"type": "text"
+								},
+								{
+									"key": "seri",
+									"value": "ABC456",
+									"type": "text"
+								},
+								{
+									"key": "deskripsi",
+									"value": "Updated description",
+									"type": "text"
+								},
+								{
+									"key": "foto",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/product/:id/update",
+							"host": ["{{base_url}}"],
+							"path": ["product", ":id", "update"],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Delete Product",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/product/:id",
+							"host": ["{{base_url}}"],
+							"path": ["product", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Ready Barang",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/ready-barang",
+							"host": ["{{base_url}}"],
+							"path": ["ready-barang"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Kategori",
+			"item": [
+				{
+					"name": "Get All Kategori",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/kategori?limit=5&search=",
+							"host": ["{{base_url}}"],
+							"path": ["kategori"],
+							"query": [
+								{
+									"key": "limit",
+									"value": "5"
+								},
+								{
+									"key": "search",
+									"value": ""
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Create Kategori",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nama_kategori\": \"Kategori Baru\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/kategori",
+							"host": ["{{base_url}}"],
+							"path": ["kategori"]
+						}
+					}
+				},
+				{
+					"name": "Update Kategori",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nama_kategori\": \"Kategori Updated\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/kategori/:id/update",
+							"host": ["{{base_url}}"],
+							"path": ["kategori", ":id", "update"],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Delete Kategori",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/kategori/:id",
+							"host": ["{{base_url}}"],
+							"path": ["kategori", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Supplier",
+			"item": [
+				{
+					"name": "Get All Suppliers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/supplier?limit=5&search=",
+							"host": ["{{base_url}}"],
+							"path": ["supplier"],
+							"query": [
+								{
+									"key": "limit",
+									"value": "5"
+								},
+								{
+									"key": "search",
+									"value": ""
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Create Supplier",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nama_supplier\": \"Supplier Name\",\n    \"alamat\": \"Jl. Supplier\",\n    \"nomor_telepon\": \"08123456789\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/supplier",
+							"host": ["{{base_url}}"],
+							"path": ["supplier"]
+						}
+					}
+				},
+				{
+					"name": "Update Supplier",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nama_supplier\": \"Updated Supplier\",\n    \"alamat\": \"Jl. Updated\",\n    \"nomor_telepon\": \"08987654321\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/supplier/:id/update",
+							"host": ["{{base_url}}"],
+							"path": ["supplier", ":id", "update"],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Delete Supplier",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/supplier/:id",
+							"host": ["{{base_url}}"],
+							"path": ["supplier", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Merk",
+			"item": [
+				{
+					"name": "Get All Merk",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/merk?limit=5&search=",
+							"host": ["{{base_url}}"],
+							"path": ["merk"],
+							"query": [
+								{
+									"key": "limit",
+									"value": "5"
+								},
+								{
+									"key": "search",
+									"value": ""
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Create Merk",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nama_merk\": \"Merk Baru\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/merk",
+							"host": ["{{base_url}}"],
+							"path": ["merk"]
+						}
+					}
+				},
+				{
+					"name": "Update Merk",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nama_merk\": \"Merk Updated\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/merk/:id/update",
+							"host": ["{{base_url}}"],
+							"path": ["merk", ":id", "update"],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Delete Merk",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/merk/:id",
+							"host": ["{{base_url}}"],
+							"path": ["merk", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Garansi",
+			"item": [
+				{
+					"name": "Get All Garansi",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/garansi?limit=5&search=",
+							"host": ["{{base_url}}"],
+							"path": ["garansi"],
+							"query": [
+								{
+									"key": "limit",
+									"value": "5"
+								},
+								{
+									"key": "search",
+									"value": ""
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Create Garansi",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"jenis_garansi\": \"1 Tahun\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/garansi",
+							"host": ["{{base_url}}"],
+							"path": ["garansi"]
+						}
+					}
+				},
+				{
+					"name": "Update Garansi",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"jenis_garansi\": \"2 Tahun\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/garansi/:id/update",
+							"host": ["{{base_url}}"],
+							"path": ["garansi", ":id", "update"],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Delete Garansi",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/garansi/:id",
+							"host": ["{{base_url}}"],
+							"path": ["garansi", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Karyawan",
+			"item": [
+				{
+					"name": "Get All Karyawan",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/karyawan?limit=5&search=",
+							"host": ["{{base_url}}"],
+							"path": ["karyawan"],
+							"query": [
+								{
+									"key": "limit",
+									"value": "5"
+								},
+								{
+									"key": "search",
+									"value": ""
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Create Karyawan",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nama_karyawan\": \"John Doe\",\n    \"alamat\": \"Jl. Example\",\n    \"nomor_telepon\": \"08123456789\",\n    \"email\": \"john@example.com\",\n    \"jenis_kelamin\": \"L\",\n    \"status_karyawan\": \"Ready\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/karyawan",
+							"host": ["{{base_url}}"],
+							"path": ["karyawan"]
+						}
+					}
+				},
+				{
+					"name": "Update Karyawan",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nama_karyawan\": \"John Updated\",\n    \"alamat\": \"Jl. Updated\",\n    \"nomor_telepon\": \"08987654321\",\n    \"email\": \"johnupdated@example.com\",\n    \"jenis_kelamin\": \"L\",\n    \"status_karyawan\": \"Kerja\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/karyawan/:id/update",
+							"host": ["{{base_url}}"],
+							"path": ["karyawan", ":id", "update"],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Delete Karyawan",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/karyawan/:id",
+							"host": ["{{base_url}}"],
+							"path": ["karyawan", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Aset",
+			"item": [
+				{
+					"name": "Get All Aset",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/aset?limit=5&search=",
+							"host": ["{{base_url}}"],
+							"path": ["aset"],
+							"query": [
+								{
+									"key": "limit",
+									"value": "5"
+								},
+								{
+									"key": "search",
+									"value": ""
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Create Aset",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nama_aset\": \"Komputer\",\n    \"nilai_aset\": 5000000,\n    \"jumlah\": 5\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/aset",
+							"host": ["{{base_url}}"],
+							"path": ["aset"]
+						}
+					}
+				},
+				{
+					"name": "Update Aset",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nama_aset\": \"Komputer Updated\",\n    \"nilai_aset\": 6000000,\n    \"jumlah\": 7\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/aset/:id/update",
+							"host": ["{{base_url}}"],
+							"path": ["aset", ":id", "update"],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Delete Aset",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/aset/:id",
+							"host": ["{{base_url}}"],
+							"path": ["aset", ":id"],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Unit Terdaftar",
+			"item": [
+				{
+					"name": "Get All Unit Terdaftar",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/unit-terdaftar?limit=10&search=&id_member=",
+							"host": ["{{base_url}}"],
+							"path": ["unit-terdaftar"],
+							"query": [
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "search",
+									"value": ""
+								},
+								{
+									"key": "id_member",
+									"value": ""
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Unit Terdaftar by Member",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/unitTerdaftar/:id?limit=10&search=",
+							"host": ["{{base_url}}"],
+							"path": ["unitTerdaftar", ":id"],
+							"query": [
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "search",
+									"value": ""
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Create Unit Terdaftar",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id_member\": \"member_id\",\n    \"nama_unit\": \"AC Samsung\",\n    \"id_garansi\": \"1\",\n    \"tanggal_berakhir_garansi\": \"2025-12-31\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/unit-terdaftar",
+							"host": ["{{base_url}}"],
+							"path": ["unit-terdaftar"]
+						}
+					}
+				},
+				{
+					"name": "Update Unit Terdaftar",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id_member\": \"member_id\",\n    \"nama_unit\": \"AC Samsung Updated\",\n    \"id_garansi\": \"2\",\n    \"tanggal_berakhir_garansi\": \"2026-12-31\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/unit-terdaftar/:id/update",
+							"host": ["{{base_url}}"],
+							"path": ["unit-terdaftar", ":id", "update"],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					}
+				}
+            ]
+        }
+    ]
+}
