@@ -14,7 +14,6 @@ import { useAuth } from "../../auth/authContext";
 import Table from "../../base-components/Table";
 import Tippy from "../../base-components/Tippy";
 import Lucide from "../../base-components/Lucide";
-import TomSelect from "../../base-components/TomSelect";
 import MemberList from "./MemberList";
 
 interface Props {

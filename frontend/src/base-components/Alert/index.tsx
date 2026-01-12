@@ -42,13 +42,10 @@ type AlertProps<C extends React.ElementType> = PolymorphicComponentPropWithRef<
 
 type AlertComponent = <C extends React.ElementType = "div">(
   props: AlertProps<C>
-) => React.ReactElement | null;
+) => React.ReactNode;
 
-const Alert: AlertComponent = forwardRef(
-  <C extends React.ElementType>(
-    { as, dismissible, variant, ...props }: AlertProps<C>,
-    ref?: PolymorphicRef<C>
-  ) => {
+const Alert = forwardRef<HTMLDivElement, AlertProps<"div">>(
+  ({ as, dismissible, variant, children, className, ...props }, ref) => {
     const [show, setShow] = useState<boolean>(true);
     const Component = as || "div";
 
@@ -181,16 +178,16 @@ const Alert: AlertComponent = forwardRef(
             variant == "soft-danger" && softDanger,
             variant == "soft-dark" && softDark,
             dismissible && "pl-5 pr-16",
-            props.className,
+            className,
           ])}
         >
-          {typeof props.children === "function"
-            ? props.children({
+          {typeof children === "function"
+            ? children({
                 dismiss: () => {
                   setShow(false);
                 },
               })
-            : props.children}
+            : children}
         </Component>
       </Transition>
     );

@@ -16,7 +16,6 @@ import Tippy from "../../base-components/Tippy";
 import LoadingIcon from "../../base-components/LoadingIcon";
 import Select from "react-select";
 import { Dialog } from "../../base-components/Headless";
-import Litepicker from "../../base-components/Litepicker";
 import { set } from "lodash";
 import { X } from "lucide-react";
 import DokumenFunction from "../Servis/DetailServis/Dokumentasi";

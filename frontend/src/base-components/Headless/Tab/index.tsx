@@ -30,7 +30,7 @@ function Tab({
   const list = useContext(listContext);
   return (
     <HeadlessTab as={Fragment}>
-      {({ selected }) => (
+      {({ selected }: { selected: boolean }) => (
         <li
           className={twMerge([
             // "focus-visible:outline-none",
@@ -48,6 +48,7 @@ function Tab({
             {typeof children === "function"
               ? children({
                   selected: selected,
+                  disabled: false,
                 })
               : children}
           </tabContext.Provider>
@@ -174,7 +175,7 @@ Tab.Panel = ({
 }: ExtractProps<typeof HeadlessTab.Panel>) => {
   return (
     <HeadlessTab.Panel as={Fragment}>
-      {({ selected }) => (
+      {({ selected }: { selected: boolean }) => (
         <Transition
           appear
           as="div"
